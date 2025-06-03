@@ -14,8 +14,12 @@ func main() {
 	}
 	defer conn.Close()
 
+	var message string
+	fmt.Println("Enter your message: ")
+	fmt.Scan(&message)
+
 	//Send message to server
-	_, err = conn.Write([]byte("Hello, server!"))
+	_, err = conn.Write([]byte(message))
 	if err != nil {
 		fmt.Println("Error sending message:", err)
 		return
