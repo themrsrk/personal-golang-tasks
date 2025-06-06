@@ -14,17 +14,19 @@ func main() {
 	}
 	defer conn.Close()
 
-	var message string
-	fmt.Println("Enter your message: ")
-	fmt.Scan(&message)
+	for {
+		var message string
+		fmt.Println("Enter your message: ")
+		fmt.Scan(&message)
 
-	//Send message to server
-	_, err = conn.Write([]byte(message))
-	if err != nil {
-		fmt.Println("Error sending message:", err)
-		return
+		//Send message to server
+		_, err = conn.Write([]byte(message))
+		if err != nil {
+			fmt.Println("Error sending message:", err)
+			return
+		}
+
+		fmt.Println("Connected to server ...")
 	}
-
-	fmt.Println("Connected to server ...")
 
 }
